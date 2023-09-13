@@ -17,7 +17,6 @@ export default function ThemeSwitcher() {
 
   return (
     <Switch
-      defaultSelected
       size="md"
       color="default"
       startContent={<SunIcon />}

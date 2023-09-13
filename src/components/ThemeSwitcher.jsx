@@ -8,8 +8,14 @@ import { SunIcon } from "@/assets/SunIcon";
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [isSelected, setIsSelected] = useState(true);
 
   useEffect(() => {
+    if (theme === "light") {
+      setIsSelected(true);
+    } else {
+      setIsSelected(false);
+    }
     setMounted(true);
   }, []);
 
@@ -17,6 +23,9 @@ export default function ThemeSwitcher() {
 
   return (
     <Switch
+      defaultSelected
+      isSelected={isSelected}
+      onValueChange={setIsSelected}
       size="md"
       color="default"
       startContent={<SunIcon />}

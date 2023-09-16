@@ -4,16 +4,22 @@ import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import { useState, useMemo } from "react";
 import classnames from "tailwindcss-classnames";
-import { SiNextdotjs } from "react-icons/si";
 import { IoIosArrowBack } from "react-icons/io";
 import { TbHome } from "react-icons/tb";
 import { MdLogout } from "react-icons/md";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { useRouter, usePathname } from "next/navigation";
+import { FacontaryIcon } from "@/assets/FacontaryIcon";
+import { signOut } from "next-auth/react";
 
 const menuItems = [
-  { id: 1, label: "Inicio", icon: TbHome, link: "/" },
-  { id: 2, label: "Inventario", icon: MdOutlineInventory2, link: "/inventory" },
+  { id: 1, label: "Inicio", icon: TbHome, link: "/application" },
+  {
+    id: 2,
+    label: "Inventario",
+    icon: MdOutlineInventory2,
+    link: "/application/inventory",
+  },
 ];
 
 function Sidebar() {
@@ -54,7 +60,7 @@ function Sidebar() {
       <CardHeader className="flex flex-col">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <SiNextdotjs className="w-8 h-8" />
+            <FacontaryIcon fill="#000000" className="w-10 h-10" />
             <span
               className={classnames("mt-2 text-lg font-medium text-text", {
                 hidden: toggleCollapse,
@@ -102,7 +108,13 @@ function Sidebar() {
         })}
       </CardBody>
       <CardFooter className="px-3 py-3">
-        <Button color="default" variant="light">
+        <Button
+          color="default"
+          variant="light"
+          onClick={() => {
+            signOut();
+          }}
+        >
           <div style={{ width: "1rem" }}>
             <MdLogout className="w-4 h-4" />
           </div>

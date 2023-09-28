@@ -11,7 +11,7 @@ const handler = NextAuth({
       },
       async authorize(credentials, req) {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/account/signin`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/login`,
           {
             method: "POST",
             body: JSON.stringify({
@@ -42,7 +42,7 @@ const handler = NextAuth({
   },
   pages: {
     signIn: "/signin",
-    newUser: "/signUp",
+    newUser: "/signup",
   },
 });
 

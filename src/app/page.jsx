@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
   return (
-    //prueba
     <div className="flex h-screen justify-center items-center">
       <Card className="w-96">
         <CardHeader className="pb-6 pt-10 px-10 flex-col items-center">

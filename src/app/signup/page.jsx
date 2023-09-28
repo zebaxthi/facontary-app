@@ -15,20 +15,17 @@ const SignUp = () => {
     event.preventDefault();
     setErrors([]);
 
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-        }),
-      }
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+      }),
+    });
 
     const responseAPI = await res.json();
 
